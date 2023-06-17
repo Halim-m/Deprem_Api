@@ -21,10 +21,9 @@ public class AssistanceService {
         this.productService = productService;
     }
 
-    public void createAssistance(CreateAssistanceRequest assistanceRequest,
-                                 CreateProductRequest productRequest){
+    public void createAssistance(CreateAssistanceRequest assistanceRequest){
         Assistance assistance = new Assistance(assistanceRequest.from());
-        Product product = productService.createProduct(productRequest);
+        Product product = productService.createProduct(assistanceRequest.productName(), assistanceRequest.number(), assistanceRequest.isHuman(), assistanceRequest.phoneNumber());
         List<Product> products = assistance.getProduct();
         products.add(product);
         Assistance updatedAssistance = new Assistance(
