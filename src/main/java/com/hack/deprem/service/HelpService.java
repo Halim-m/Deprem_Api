@@ -14,10 +14,15 @@ import java.util.List;
 public class HelpService {
     private final HelpRepository helpRepository;
     private final ProductService productService;
+    private final AssistancePointService assistancePointService;
 
-    public HelpService(HelpRepository helpRepository, ProductService productService) {
+    public HelpService(
+            HelpRepository helpRepository,
+            ProductService productService,
+            AssistancePointService assistancePointService) {
         this.helpRepository = helpRepository;
         this.productService = productService;
+        this.assistancePointService = assistancePointService;
     }
 
     public List<HelpDto> getHelps(){
@@ -31,5 +36,6 @@ public class HelpService {
         Product product = productService.createProduct(helpRequest.name(), helpRequest.productName(), helpRequest.number(), helpRequest.isHuman(), helpRequest.phoneNumber());
         Help help = new Help(helpRequest.location(), product); //Todo
         helpRepository.save(help);
+        assistancePointService.updateNeed(helpRequest.location(), product);
     }
 }
