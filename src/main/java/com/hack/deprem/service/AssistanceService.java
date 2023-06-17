@@ -1,9 +1,8 @@
 package com.hack.deprem.service;
 
+import com.hack.deprem.dto.AssistanceDto;
 import com.hack.deprem.dto.request.CreateAssistanceRequest;
-import com.hack.deprem.dto.request.CreateProductRequest;
 import com.hack.deprem.model.Assistance;
-import com.hack.deprem.model.Help;
 import com.hack.deprem.model.Product;
 import com.hack.deprem.repository.AssistanceRepository;
 import org.springframework.stereotype.Service;
@@ -22,18 +21,16 @@ public class AssistanceService {
     }
 
     public void createAssistance(CreateAssistanceRequest assistanceRequest){
-        Assistance assistance = new Assistance(assistanceRequest.from());
         Product product = productService.createProduct(assistanceRequest.productName(), assistanceRequest.number(), assistanceRequest.isHuman(), assistanceRequest.phoneNumber());
-        List<Product> products = assistance.getProduct();
-        products.add(product);
-        Assistance updatedAssistance = new Assistance(
-                assistance.getUuid(),
-                products,
-                assistance.getFromCity(),
-                assistance.getToLocation());
-
-        assistanceRepository.save(updatedAssistance);
+        Assistance assistance = new Assistance(product, assistanceRequest.from());
+        assistanceRepository.save(assistance);
     }
 
-    public void routeAssistance(String toLocation){}
+    public List<AssistanceDto> getAssistancesByCity(int city){
+        return assistanceRepository.getAssistancesByFromCity(city).stream().map(AssistanceDto::convert).toList();
+    }
+
+    public List<AssistanceDto> getAssistances(){
+        return assistanceRepository.findAll().stream().map(AssistanceDto::convert).toList();
+    }
 }

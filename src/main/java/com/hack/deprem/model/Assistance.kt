@@ -4,6 +4,7 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
+import jakarta.persistence.OneToOne
 import org.hibernate.annotations.GenericGenerator
 
 @Entity
@@ -12,20 +13,20 @@ data class Assistance(
         @GeneratedValue(generator = "UUID")
         @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
         val uuid: String? ="",
-        @OneToMany
-        val product: List<Product>? = emptyList(),
+        @OneToOne
+        val product: Product,
         val fromCity: Int,
         val toLocation: String? = "" //Todo
 ){
-        constructor(from:Int):this(
+        constructor(product: Product, from:Int):this(
                 null,
-                null,
+                product,
                 from,
                 null
         )
-        constructor(from: Int, to: String) : this(
+        constructor(product: Product, from: Int, to: String) : this(
                 null,
-                null,
+                product,
                 from,
                 to
         )

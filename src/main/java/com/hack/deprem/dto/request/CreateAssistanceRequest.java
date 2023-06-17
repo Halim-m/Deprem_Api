@@ -7,6 +7,4 @@ public record CreateAssistanceRequest(
         int number,
         boolean isHuman,
         String phoneNumber
-        ) {
-
-}
+        ){}

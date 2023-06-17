@@ -28,4 +28,7 @@ public class AssistancePointService {
     public AssistancePointDto getPoint(String location){
         return AssistancePointDto.convert(assistancePointRepository.getAssistancePointByLocation(location));
     }
+
+
+
 }

@@ -4,6 +4,7 @@ import com.hack.deprem.dto.HelpDto;
 import com.hack.deprem.dto.request.CreateHelpRequest;
 import com.hack.deprem.dto.request.CreateProductRequest;
 import com.hack.deprem.service.HelpService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,8 @@ public class HelpController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Void> createCustomer(@RequestBody CreateHelpRequest createHelpRequest) {
+    public ResponseEntity<Void> createCustomer(@Valid @RequestBody CreateHelpRequest createHelpRequest) {
+        System.out.println(createHelpRequest);
         helpService.createHelp(createHelpRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

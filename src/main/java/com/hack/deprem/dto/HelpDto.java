@@ -8,7 +8,7 @@ import java.util.List;
 public record HelpDto(
         String location,
 
-        List<Product> product
+        Product product
 ) {
     public static HelpDto convert(Help help){
         return new HelpDto(help.getLocation(), help.getProduct());

@@ -8,11 +8,10 @@ import java.util.List;
 
 public record AssistancePointDto(
         String location,
-        List<Product> stock,
         List<Product> onRoad,
         List<Product> need
 ) {
     public static AssistancePointDto convert(AssistancePoint assistancePoint){
-        return new AssistancePointDto(assistancePoint.getLocation(), assistancePoint.getStock(), assistancePoint.getOnRoad(), assistancePoint.getNeed());
+        return new AssistancePointDto(assistancePoint.getLocation(), assistancePoint.getOnRoad(), assistancePoint.getNeed());
     }
 }

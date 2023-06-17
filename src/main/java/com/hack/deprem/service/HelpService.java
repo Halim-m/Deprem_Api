@@ -29,12 +29,7 @@ public class HelpService {
 
     public void createHelp(CreateHelpRequest helpRequest){
         Product product = productService.createProduct(helpRequest.productName(), helpRequest.number(), helpRequest.isHuman(), helpRequest.phoneNumber());
-        Help help = new Help(helpRequest.location()); //Todo
-        List<Product> products = help.getProduct();
-        products.add(product);
-        Help updatedHelp = new Help(help.getUuid(), help.getLocation(), products);
-        helpRepository.save(updatedHelp);
+        Help help = new Help(helpRequest.location(), product); //Todo
+        helpRepository.save(help);
     }
-
-
 }

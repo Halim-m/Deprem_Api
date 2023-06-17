@@ -10,12 +10,12 @@ data class Help(
         @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
         val uuid: String? ="",
         val location: String,//Todo
-        @OneToMany
-        val product: List<Product>? = emptyList()
+        @OneToOne
+        val product: Product
 ){
-        constructor(location: String) : this(
+        constructor(location: String, product: Product) : this(
                 null,
                 location,
-                null
+                product
         )
 }
