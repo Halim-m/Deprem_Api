@@ -2,7 +2,6 @@ package com.hack.deprem.controller;
 
 import com.hack.deprem.dto.HelpDto;
 import com.hack.deprem.dto.request.CreateHelpRequest;
-import com.hack.deprem.dto.request.CreateProductRequest;
 import com.hack.deprem.service.HelpService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

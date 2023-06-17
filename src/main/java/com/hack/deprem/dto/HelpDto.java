@@ -6,11 +6,16 @@ import com.hack.deprem.model.Product;
 import java.util.List;
 
 public record HelpDto(
-        String location,
+        String lat,
+        String lon,
 
         Product product
 ) {
     public static HelpDto convert(Help help){
-        return new HelpDto(help.getLocation(), help.getProduct());
+        String[] parts = help.getLocation().split("-");
+
+        String lat = parts[0];
+        String lon = parts[1];
+        return new HelpDto(lat, lon, help.getProduct());
     }
 }

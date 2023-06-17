@@ -13,11 +13,14 @@ import java.util.List;
 public class AssistanceService {
     private final AssistanceRepository assistanceRepository;
     private final ProductService productService;
+    private final AssistancePointService assistancePointService;
 
     public AssistanceService(AssistanceRepository assistanceRepository,
-                             ProductService productService) {
+                             ProductService productService,
+                             AssistancePointService assistancePointService) {
         this.assistanceRepository = assistanceRepository;
         this.productService = productService;
+        this.assistancePointService = assistancePointService;
     }
 
     public void createAssistance(CreateAssistanceRequest assistanceRequest){
