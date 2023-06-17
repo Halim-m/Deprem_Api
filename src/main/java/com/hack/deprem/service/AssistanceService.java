@@ -23,13 +23,7 @@ public class AssistanceService {
 
     public void createAssistance(CreateAssistanceRequest assistanceRequest,
                                  CreateProductRequest productRequest){
-        Assistance assistance;
-        if(assistanceRepository.existsByFromCity(assistanceRequest.from())){
-            assistance = assistanceRepository.getAssistanceByFromCity(assistanceRequest.from());
-        }else{
-
-            assistance = new Assistance(assistanceRequest.from());
-        }
+        Assistance assistance = new Assistance(assistanceRequest.from());
         Product product = productService.createProduct(productRequest);
         List<Product> products = assistance.getProduct();
         products.add(product);
