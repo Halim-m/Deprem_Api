@@ -21,7 +21,7 @@ public class AssistanceService {
     }
 
     public void createAssistance(CreateAssistanceRequest assistanceRequest){
-        Product product = productService.createProduct(assistanceRequest.productName(), assistanceRequest.number(), assistanceRequest.isHuman(), assistanceRequest.phoneNumber());
+        Product product = productService.createProduct(assistanceRequest.name(), assistanceRequest.productName(), assistanceRequest.number(), assistanceRequest.isHuman(), assistanceRequest.phoneNumber());
         Assistance assistance = new Assistance(product, assistanceRequest.from());
         assistanceRepository.save(assistance);
     }

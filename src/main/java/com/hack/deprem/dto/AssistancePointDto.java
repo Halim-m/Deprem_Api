@@ -1,7 +1,6 @@
 package com.hack.deprem.dto;
 
 import com.hack.deprem.model.AssistancePoint;
-import com.hack.deprem.model.Help;
 import com.hack.deprem.model.Product;
 
 import java.util.List;

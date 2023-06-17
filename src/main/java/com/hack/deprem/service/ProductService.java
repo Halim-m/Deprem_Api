@@ -14,8 +14,8 @@ public class ProductService {
     }
 
     //create
-    protected Product createProduct(String productName, int number, boolean isHuman, String phoneNumber){
-        Product product = new Product(productName, number, isHuman, phoneNumber);
+    protected Product createProduct(String name, String productName, int number, boolean isHuman, String phoneNumber){
+        Product product = new Product(name, productName, number, isHuman, phoneNumber);
         productRepository.save(product);
         return product;
     }

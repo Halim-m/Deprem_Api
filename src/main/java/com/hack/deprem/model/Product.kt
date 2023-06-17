@@ -11,20 +11,23 @@ data class Product(
         @GeneratedValue(generator = "UUID")
         @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
         val uuid: String? ="",
+        val name: String? = "",
         val productName: String,
         val number: Int,
         val isHuman: Boolean,
         val phoneNumber: String? = ""
 ){
-        constructor(productName: String, number: Int, isHuman: Boolean) : this(
+        constructor(name: String, productName: String, number: Int, isHuman: Boolean) : this(
                 null,
+                name,
                 productName,
                 number,
                 isHuman,
                 null
         )
-        constructor(productName: String, number: Int, isHuman: Boolean, phoneNumber: String) : this(
+        constructor(name: String, productName: String, number: Int, isHuman: Boolean, phoneNumber: String) : this(
                 null,
+                name,
                 productName,
                 number,
                 isHuman,
