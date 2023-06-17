@@ -12,10 +12,18 @@ public record HelpDto(
         Product product
 ) {
     public static HelpDto convert(Help help){
-        String[] parts = help.getLocation().split("-");
+        String lat;
+        String lon;
+        if(!help.getLocation().isEmpty()){
+            String[] parts = help.getLocation().split("-");
 
-        String lat = parts[0];
-        String lon = parts[1];
+            lat = parts[0];
+            lon = parts[1];
+        }
+        else{
+            lat = "-1";
+            lon = "-1";
+        }
         return new HelpDto(lat, lon, help.getProduct());
     }
 }

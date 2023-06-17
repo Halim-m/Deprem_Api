@@ -12,10 +12,18 @@ public record AssistancePointDto(
         List<Product> need
 ) {
     public static AssistancePointDto convert(AssistancePoint assistancePoint){
+        String lat;
+        String lon;
+        if(!assistancePoint.getLocation().isEmpty()){
         String[] parts = assistancePoint.getLocation().split("-");
 
-        String lat = parts[0];
-        String lon = parts[1];
+        lat = parts[0];
+        lon = parts[1];
+        }
+        else{
+            lat = "-1";
+            lon = "-1";
+        }
         return new AssistancePointDto(lat, lon, assistancePoint.getOnRoad(), assistancePoint.getNeed());
     }
 }
