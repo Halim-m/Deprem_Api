@@ -32,9 +32,8 @@ public class HelpController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Void> createCustomer(@RequestBody CreateHelpRequest createHelpRequest,
-                                                  @RequestBody CreateProductRequest createProductRequest) {
-        helpService.createHelp(createHelpRequest, createProductRequest);
+    public ResponseEntity<Void> createCustomer(@RequestBody CreateHelpRequest createHelpRequest) {
+        helpService.createHelp(createHelpRequest);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

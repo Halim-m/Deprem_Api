@@ -3,7 +3,6 @@ package com.hack.deprem.service;
 
 import com.hack.deprem.dto.HelpDto;
 import com.hack.deprem.dto.request.CreateHelpRequest;
-import com.hack.deprem.dto.request.CreateProductRequest;
 import com.hack.deprem.model.Help;
 import com.hack.deprem.model.Product;
 import com.hack.deprem.repository.HelpRepository;
@@ -28,8 +27,8 @@ public class HelpService {
         return helpRepository.getHelpsByLocation(location).stream().map(HelpDto::convert).toList();
     }
 
-    public void createHelp(CreateHelpRequest helpRequest, CreateProductRequest productRequest){
-        Product product = productService.createProduct(productRequest);
+    public void createHelp(CreateHelpRequest helpRequest){
+        Product product = productService.createProduct(helpRequest.productName(), helpRequest.number(), helpRequest.isHuman(), helpRequest.phoneNumber());
         Help help = new Help(helpRequest.location()); //Todo
         List<Product> products = help.getProduct();
         products.add(product);
