@@ -1,6 +1,7 @@
 package com.hack.deprem.controller;
 
 import com.hack.deprem.dto.HelpDto;
+import com.hack.deprem.dto.request.CreateHelpRequest;
 import com.hack.deprem.service.HelpService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +28,13 @@ public class HelpController {
     public ResponseEntity<List<HelpDto>> getHelpsByLocation(@RequestParam("location") String location) {
         List<HelpDto> helps = helpService.getHelpsByLocation(location);
         return new ResponseEntity<>(helps, HttpStatus.OK);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Void> createCustomer(@RequestBody CreateHelpRequest createHelpRequest) {
+        System.out.println(createHelpRequest);
+        helpService.createHelp(createHelpRequest);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @PutMapping("/confirm")
