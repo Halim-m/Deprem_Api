@@ -33,7 +33,13 @@ public class HelpService {
     }
 
     public void createHelp(CreateHelpRequest helpRequest){
-        Product product = productService.createProduct(helpRequest.name(), helpRequest.productName(), helpRequest.number(), helpRequest.isHuman(), helpRequest.phoneNumber());
+        Product product = productService.createProduct(
+                helpRequest.name(),
+                helpRequest.productName(),
+                helpRequest.number(),
+                helpRequest.isHuman(),
+                helpRequest.phoneNumber());
+
         Help help = new Help(helpRequest.location(), product); //Todo
         helpRepository.save(help);
         assistancePointService.updateNeed(helpRequest.location(), product);
