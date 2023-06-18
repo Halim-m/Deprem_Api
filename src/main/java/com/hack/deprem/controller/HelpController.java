@@ -31,10 +31,15 @@ public class HelpController {
         return new ResponseEntity<>(helps, HttpStatus.OK);
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<Void> createCustomer(@Valid @RequestBody CreateHelpRequest createHelpRequest) {
-        System.out.println(createHelpRequest);
-        helpService.createHelp(createHelpRequest);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    @PutMapping("/confrim")
+    public ResponseEntity<Void> confirmStatus(@RequestParam("uuid") String uuid) {
+        helpService.confirmStatus(uuid);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @PutMapping("/reject")
+    public ResponseEntity<Void> rejectStatus(@RequestParam("uuid") String uuid) {
+        helpService.rejectStatus(uuid);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

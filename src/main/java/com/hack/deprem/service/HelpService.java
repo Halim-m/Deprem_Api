@@ -38,4 +38,16 @@ public class HelpService {
         helpRepository.save(help);
         assistancePointService.updateNeed(helpRequest.location(), product);
     }
+
+    public void confirmStatus(String uuid){
+        Help help = helpRepository.findById(uuid).get();
+        help.setStatus((short) 1);
+        helpRepository.save(help);
+    }
+
+    public void rejectStatus(String uuid){
+        Help help = helpRepository.findById(uuid).get();
+        help.setStatus((short) 2);
+        helpRepository.save(help);
+    }
 }

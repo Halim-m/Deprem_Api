@@ -11,11 +11,13 @@ data class Help(
         val uuid: String? ="",
         val location: String,//Todo
         @OneToOne
-        val product: Product
+        val product: Product,
+        var status: Short
 ){
         constructor(location: String, product: Product) : this(
                 null,
                 location,
-                product
+                product,
+                0
         )
 }

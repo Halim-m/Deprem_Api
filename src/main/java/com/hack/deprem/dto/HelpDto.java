@@ -6,10 +6,11 @@ import com.hack.deprem.model.Product;
 import java.util.List;
 
 public record HelpDto(
+        String uuid,
         String lat,
         String lon,
-
-        Product product
+        Product product,
+        short status
 ) {
     public static HelpDto convert(Help help){
         String lat;
@@ -28,6 +29,6 @@ public record HelpDto(
             lat = "-1";
             lon = "-1";
         }
-        return new HelpDto(lat, lon, help.getProduct());
+        return new HelpDto(help.getUuid(), lat, lon, help.getProduct(), help.getStatus());
     }
 }
