@@ -14,11 +14,15 @@ public record HelpDto(
     public static HelpDto convert(Help help){
         String lat;
         String lon;
-        if(!help.getLocation().isEmpty()){
+        if(!help.getLocation().isEmpty()&& help.getProduct().getNumber() != 3){
             String[] parts = help.getLocation().split("-");
 
             lat = parts[0];
             lon = parts[1];
+        }
+        else if(help.getProduct().getNumber() == 3){
+            lat = help.getLocation();
+            lon = "-1";
         }
         else{
             lat = "-1";
