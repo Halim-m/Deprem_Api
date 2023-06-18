@@ -32,6 +32,7 @@ public class AssistanceService {
                 assistanceRequest.phoneNumber());
         Assistance assistance = new Assistance(product, assistanceRequest.from());
         assistanceRepository.save(assistance);
+        assistancePointService.updateOnRoad(String.format("%d",assistanceRequest.from()), product);
     }
 
     public List<AssistanceDto> getAssistancesByCity(int city){
