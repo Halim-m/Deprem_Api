@@ -1,10 +1,6 @@
 package com.hack.deprem.model
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.Id
-import jakarta.persistence.OneToMany
-import jakarta.persistence.UniqueConstraint
+import jakarta.persistence.*
 import org.hibernate.annotations.GenericGenerator
 
 @Entity
@@ -13,6 +9,7 @@ data class AssistancePoint(
         @GeneratedValue(generator = "UUID")
         @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
         val uuid: String? ="",
+        @Column(unique = true)
         val location: String, //Todo
         @OneToMany
         val stock: List<Product>? = emptyList(),
