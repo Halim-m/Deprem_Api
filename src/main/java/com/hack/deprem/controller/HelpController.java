@@ -1,9 +1,7 @@
 package com.hack.deprem.controller;
 
 import com.hack.deprem.dto.HelpDto;
-import com.hack.deprem.dto.request.CreateHelpRequest;
 import com.hack.deprem.service.HelpService;
-import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,7 +29,7 @@ public class HelpController {
         return new ResponseEntity<>(helps, HttpStatus.OK);
     }
 
-    @PutMapping("/confrim")
+    @PutMapping("/confirm")
     public ResponseEntity<Void> confirmStatus(@RequestParam("uuid") String uuid) {
         helpService.confirmStatus(uuid);
         return new ResponseEntity<>(HttpStatus.OK);
