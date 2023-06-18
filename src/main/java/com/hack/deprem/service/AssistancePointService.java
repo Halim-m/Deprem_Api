@@ -40,12 +40,14 @@ public class AssistancePointService {
     }
 
     protected void updateNeed(String location, Product product){
+        if(assistancePointRepository.existsByLocation(location)){
         AssistancePoint assistancePoint = assistancePointRepository.getAssistancePointByLocation(location);
         List<Product> need = assistancePoint.getNeed();
         need.add(product);
         AssistancePoint updatedPoint = new AssistancePoint(assistancePoint.getUuid(),
                 assistancePoint.getLocation(),assistancePoint.getStock(), assistancePoint.getOnRoad(), need);
         assistancePointRepository.save(updatedPoint);
+        }
     }
 
     protected void updateStock(String location, Product product){

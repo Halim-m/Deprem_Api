@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/v1/point")
+@CrossOrigin("*")
 public class AssistancePointController {
     private final AssistancePointService assistancePointService;
 

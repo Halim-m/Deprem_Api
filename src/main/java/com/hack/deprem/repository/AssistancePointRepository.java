@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface AssistancePointRepository  extends JpaRepository<AssistancePoint, String> {
     AssistancePoint getAssistancePointByLocation(String location);
+    Boolean existsByLocation(String location);
 }

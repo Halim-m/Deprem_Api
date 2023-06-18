@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/v1/help")
+@CrossOrigin("*")
 public class HelpController {
     private final HelpService helpService;
 
